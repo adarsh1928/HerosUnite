@@ -6,6 +6,7 @@ const { addBenefitier, getAllSoldiersDetail } = require("../controller/AddBenefi
 
 const {capturePayment, verifyPayment}=require("../controller/Payment")
 const { getDonateHistory } = require("../controller/DonateHistory")
+const { addVolenteer } = require("../controller/Volenteer")
 
 
 const router = express.Router()
@@ -28,6 +29,8 @@ router.post("/getDonateHistory",getDonateHistory)
 
 router.post("/reset-password-token",resetPasswordToken)
 router.post("/reset-password",resetPassword)
+
+router.post("/addVolenteer",addVolenteer)
 
 
 

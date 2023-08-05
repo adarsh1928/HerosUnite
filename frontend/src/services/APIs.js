@@ -15,27 +15,14 @@ export const endpoints = {
   VERIFY_SIGNATURE:BASE_URL+"/auth/verifySignature",
   CAPTURE_PAYMENT :BASE_URL+"/auth/capturePayment",
   GET_SOLDIERS_DETAILS:BASE_URL+"/auth/getAllSoldiersDetail",
-  GET_DONATE_HISTORY:BASE_URL+"/auth/getDonateHistory"
+  GET_DONATE_HISTORY:BASE_URL+"/auth/getDonateHistory",
+  ADD_VOLENTEER:BASE_URL+"/auth/addVolenteer"
 }
 
 
-// PROFILE ENDPOINTS
 export const profileEndpoints = {
   GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
 }
 
 
-// COURSE ENDPOINTS
-
-
-// CONTACT-US API
-
-
-// SETTINGS PAGE API
-export const settingsEndpoints = {
-  UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
-  UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
-  CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
-  DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
-}

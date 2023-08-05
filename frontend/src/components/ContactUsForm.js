@@ -3,6 +3,10 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { apiConnector } from '../services/ApiConnector';
 import { endpoints } from '../services/APIs';
+import {  toast } from 'react-toastify';
+// import { Toast } from 'react-toastify/dist/components';
+import { Navigate } from 'react-router-dom';
+import { ToastBar } from 'react-hot-toast';
 
 const ContactUsForm = () => {
   const dispatch = useDispatch();
@@ -25,19 +29,17 @@ const ContactUsForm = () => {
   };
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
       console.log('submit button pressed');
-
-      // Update the Google Apps Script URL with your actual script ID
-      const scriptUrl = `https://script.google.com/a/macros/sot.pdpu.ac.in/s/AKfycbztSGKVlZlVb91aA4gNn7D4R44_tTgj_0IcjY5szf1tLG4VbmXmoAgeXbyeEbMtZ5TR/exec`;
-
-      const response = await apiConnector('POST', scriptUrl, formData);
+      const response = await apiConnector('POST', endpoints.CONTACT_US_API,{email,title,message,contactNo});
 
       console.log('success', response);
 
-      const result = await response.json();
-      console.log('success', result);
+      ToastBar.success("We got your message",{duration:5000,position:'top-center'})
+      
+
+
     } catch (err) {
       console.log(err);
     }
@@ -61,6 +63,7 @@ const ContactUsForm = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700">Title:</label>
             <input
+            required
               type="text"
               name="title"
               onChange={handleOnChange}
@@ -72,6 +75,7 @@ const ContactUsForm = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700">Contact No:</label>
             <input
+            required
               type="text"
               name="contactNo"
               onChange={handleOnChange}
@@ -83,6 +87,7 @@ const ContactUsForm = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700">Message:</label>
             <textarea
+            required
               type="text"
               name="message"
               onChange={handleOnChange}

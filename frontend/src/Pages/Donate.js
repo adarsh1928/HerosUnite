@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { buyCourse } from '../services/operation/SoldierFeature';
+import { DonateForSoldiers } from '../services/operation/SoldierFeature';
 import { apiConnector } from '../services/ApiConnector';
 import { endpoints } from '../services/APIs';
-import image9 from "../assets/images19.jpg"
+import image9 from "../assets/image13.png"
+import { toast } from 'react-hot-toast';
 
 export default function Donate() {
 
@@ -18,7 +19,7 @@ export default function Donate() {
     const id = soldierData[index]._id
 
     const soldier = id
-    buyCourse(token, soldier, user, navigate, dispatch);
+    DonateForSoldiers(token, soldier, user, navigate, dispatch);
   }
 
   const initialSearchQuery = '';
@@ -27,10 +28,6 @@ export default function Donate() {
 
   const [soldierData, setSoldiersData] = useState([]);
 
-  const handleSubmit = async (req, res) => {
-    console.log("handleformsubmit")
-
-  }
   const handleDonateHistory = async (e) => {
     navigate("/donationHistory")
   }
@@ -76,14 +73,14 @@ export default function Donate() {
         {filteredSoldierData.map((data, index) => (
           <div key={index} className="bg-white rounded-lg shadow-lg flex flex-col">
             <div className="flex-shrink-0 w-full h-48 md:h-32 rounded-t-lg overflow-hidden">
-              {/* Soldier Photo (Placeholder image) */}
+           
               <img src={image9} alt="Soldier" className="w-full h-full object-cover" />
             </div>
               <h2 className="font-semibold mt-3 text-xl text-center">{data.name}</h2>
-              {/* Soldier Address */}
+              
               <p className="text-gray-600 text-center">{data.address}</p>
             <div className="p-4 flex-grow">
-              {/* Soldier Information */}
+            
               <div className="grid grid-cols-2 gap-4 mt-3">
                 <div>
                   <p className="font-semibold">Position:</p>

@@ -72,60 +72,6 @@ exports.capturePayment = async (req, res) => {
     }
 };
 
-// Verify Signature of Razorpay and Server
-// exports.verifySignature = async (req, res) => {
-//     const webhookSecret = "adarshyouaredointgreatkeepitup";
-//     const signature = req.headers["x-razorpay-signature"];
-
-//     const shasum = crypto.createHmac("sha256", webhookSecret);
-//     shasum.update(JSON.stringify(req.body));
-//     const digest = shasum.digest("hex");
-//     console.log("inside verify");
-//     console.log("signature",signature)
-
-//     if (signature === digest) {
-//         console.log("Payment is Authorized");
-
-//         const { notes } = req.body.payload.payment.entity;
-
-//         try {
-//             console.log("notes",notes)
-//             const { SoldierProfileId, userId } = notes;
-
-//             const receivedSoldierProfile = await Donate.create({
-//                 donatedBy: userId,
-//                 donatedTo: SoldierProfileId,
-//                 amount: amount,
-//             });
-//             console.log("succcc")
-
-//             if (!receivedSoldierProfile) {
-//                 return res.status(500).json({
-//                     success: false,
-//                     message: "SoldierProfile not Found",
-//                 });
-//             }
-
-//             console.log(receivedSoldierProfile);
-
-//             return res.status(200).json({
-//                 success: true,
-//                 message: "Payment and Donation recorded successfully",
-//             });
-//         } catch (error) {
-//             console.log(error);
-//             return res.status(500).json({
-//                 success: false,
-//                 message: error.message,
-//             });
-//         }
-//     } else {
-//         return res.status(400).json({
-//             success: false,
-//             message: "Invalid request",
-//         });
-//     }
-// };
 
 exports.verifyPayment = async (req, res) => {
     console.log("req",req.body);
@@ -134,16 +80,15 @@ exports.verifyPayment = async (req, res) => {
     const razorpay_signature = req.body?.razorpay_signature;
     const soldierID = req.body?.soldierId;//
     const amount=req.body.amount
-    const userId ='64beb0be29b51d6b47cc39b5';//
+    const userId =req.body.userId
 
-    console.log("signature",  razorpay_signature)
+    console.log("signature",  razorpay_signature,userId)
 
     if (!razorpay_payment_id ||
      !soldierID || !userId) {
         return res.status(200).json({ success: false, message: "Payment Failed" });
     }
-    // console.log("expectedsign",expectedSignature,razorpay_signature,razorpay_order_id,razorpay_payment_id)
-
+    
     let body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
         .createHmac("sha256", process.env.RAZORPAY_SECRET)
