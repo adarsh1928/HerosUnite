@@ -53,6 +53,22 @@ const data3 = {
     },
   ],
 };
+const data4 = {
+  labels: [
+    'Uttar Pradesh',
+    'Punjab',
+    'Maharastra',
+    'Rajastan',
+    'Haryana',
+  ],
+  datasets: [
+    {
+      data: [180000, 95000, ,87000, 85000, 76000],
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8BC34A', '#FF9800'],
+      hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8BC34A', '#FF9800'],
+    },
+  ],
+};
 
 export default function VisualData() {
   Chart.register(ArcElement, Tooltip, Legend);
@@ -118,6 +134,12 @@ export default function VisualData() {
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Medals Won By Defence Personnel</h2>
           <div className="chart-container">
             <Pie data={data3} options={options} width={400} height={400} />
+          </div>
+        </div>
+        <div className="border p-4 rounded-lg shadow-md bg-white">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Top Five states in contribution of soldiers</h2>
+          <div className="chart-container">
+            <Pie data={data4} options={options} width={400} height={400} />
           </div>
         </div>
       </div>

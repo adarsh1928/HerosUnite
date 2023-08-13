@@ -2,7 +2,7 @@
 import logo from "../assets/logo.png"
 
 import React, { useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom";
 import { NavbarLinksForStudents } from "../data/NavbarLinks";
 import { matchPath } from "react-router-dom";
 import { useSelector } from "react-redux";

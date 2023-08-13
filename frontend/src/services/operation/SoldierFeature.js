@@ -21,7 +21,7 @@ function loadScript(src) {
 }
 
 
-export async function DonateForSoldiers(token, soldierId, userDetails, navigate, dispatch) {
+export async function DonateForSoldiers(token, soldierId,donationAmount, userDetails, navigate, dispatch) {
     const toastId = toast.loading("Loading...");
     try{
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
@@ -33,7 +33,7 @@ export async function DonateForSoldiers(token, soldierId, userDetails, navigate,
 
         //initiate the order
         console.log("userr", userDetails)
-        const amount=1000;
+        const amount=donationAmount;
         const userId=userDetails._id
         console.log("USEER ID",userId)
         

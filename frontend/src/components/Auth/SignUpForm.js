@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom"
 import { sendOtp } from "../../services/authAPI"
 import { setSignupData } from "../../slice/authSlice"
 
-import Tab from "../Tab"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 function SignupForm() {

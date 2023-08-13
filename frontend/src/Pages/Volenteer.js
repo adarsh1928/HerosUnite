@@ -11,13 +11,20 @@ export default function VolunteerPage() {
   const { user } = useSelector((state) => state.profile);
   const name = user.firstName;
   const email = user.email;
-  const contactNo = user.contactNo;
+  // const contactNo = user.contactNo;
+
+  // console.log("user , email,contact",name,email,contactNo)
 
   const handleVolunteer = async () => {
     try {
-      const response = await apiConnector("POST", endpoints.ADD_VOLENTEER, { name, email, contactNo });
-      toast.success("Thank You for Requesting to Volunteer, our Team will contact you soon", { duration: 5000 }); // 5 seconds duration
-      console.log(response);
+      const response = await apiConnector("POST", endpoints.ADD_VOLENTEER, { name, email });
+
+     if(response.data.message==="You are already in our request"){
+         toast.success("You are already in our request")
+     }
+
+     else toast.success("Thank You for Requesting to Volunteer, our Team will contact you soon", { duration: 5000 }); // 5 seconds duration
+      // console.log(response);
     } catch (err) {
       toast.error("Not added, please try again", { duration: 5000 }); // 5 seconds duration
     }
@@ -26,7 +33,7 @@ export default function VolunteerPage() {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-8 text-center text-yellow-500">Make Volunteer or Give Service</h1>
-      <p className="mb-4 text-2xl font-bold text-center text-pink-600">
+      <p className="mb-4 text-xl lg:text-2xl font-bold text-center text-pink-600">
         Our soldiers sacrifice so much to protect us and our country. You can play a crucial role in supporting them in various ways. Here are some volunteer opportunities where you can serve our soldiers
         Give service
       </p>

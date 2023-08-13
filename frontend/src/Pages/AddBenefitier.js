@@ -4,6 +4,7 @@ import { apiConnector } from '../services/ApiConnector';
 import { endpoints } from '../services/APIs';
 import { useNavigate } from 'react-router-dom';
 import army7 from "../assets/army2.png"
+import { toast } from 'react-hot-toast';
 
 const AddBenefitier = () => {
   const initialFormData = {
@@ -36,7 +37,8 @@ const AddBenefitier = () => {
       // console.log(name, position, soldierUnit, address, contactOfRelative, YearOfDeath, incident, otherInfo, age)
       const response = await apiConnector("POST", endpoints.ADD_BENEFITIER, { name, position, soldierUnit, address, contactOfRelative, YearOfDeath, incident, otherInfo, age })
 
-      console.log("response", response)
+      // console.log("response", response)
+      toast.success("Benefitier details added successfully!");
       // Reset the form after submission
       setFormData({
         name: '',
@@ -51,9 +53,9 @@ const AddBenefitier = () => {
       });
       navigate("/")
 
-
     }
     catch (err) {
+      toast.error("An error occurred. Please try again later.");
       console.log(err);
     }
   };
