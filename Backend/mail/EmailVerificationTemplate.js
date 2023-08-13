@@ -8,7 +8,7 @@ const otpTemplate = (otp) => {
 			
 			<div class="body">
 				<p>Dear User,</p>
-				<p>Thank you for registering with CollegeToCarrer. To complete your registration, please use the following OTP
+				<p>Thank you for registering with HerosUnite. To complete your registration, please use the following OTP
 					(One-Time Password) to verify your account:</p>
 				<h2 class="highlight">${otp}</h2>
 				
