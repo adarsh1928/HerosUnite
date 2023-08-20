@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { Link, useNavigate,BrowserRouter } from "react-router-dom"
 import { login } from "../../services/authAPI"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 
 
@@ -72,11 +73,11 @@ function LoginForm() {
           onClick={() => setShowPassword((prev) => !prev)}
           className="absolute right-3 top-[38px] z-[10] cursor-pointer"
         >
-          {/* {showPassword ? (
+          {showPassword ? (
             <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
           ) : (
             <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-          )} */}
+          )}
         </span>
         <Link to="/forgot-password">
           <p className="mt-1 ml-auto max-w-max text-xs text-blue-100">

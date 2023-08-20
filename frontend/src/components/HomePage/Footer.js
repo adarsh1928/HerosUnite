@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="mb-8">
             <h3 className="text-white text-xl font-bold mb-4">About Us</h3>
             <p className="text-richblack-5">
-              we are developers from PDPU and also available for part time or freelancing kinf of work
+             I am adarsh and a software Engineer and also available for part time or freelancing kind of work
             </p>
           </div>
           <div className="mb-8">

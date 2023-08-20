@@ -14,6 +14,7 @@
 
 
 # misc
+./fr
 .env
 
 .DS_Store

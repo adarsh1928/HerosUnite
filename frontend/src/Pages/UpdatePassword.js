@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { resetPassword } from "../services/authAPI"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 function UpdatePassword() {
   const navigate = useNavigate()
@@ -64,11 +65,11 @@ function UpdatePassword() {
                 onClick={() => setShowPassword((prev) => !prev)}
                 className="absolute right-3 top-[38px] z-[10] cursor-pointer"
               >
-                {/* {showPassword ? (
+                {showPassword ? (
                   <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
                 ) : (
                   <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-                )} */}
+                )}
               </span>
             </label>
             <label className="relative mt-3 block">
