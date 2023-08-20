@@ -7,8 +7,7 @@
 
 # production
 /build
-/package-lock.json
-/package.json
+
 
 .env
 # misc
