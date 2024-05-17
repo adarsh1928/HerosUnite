@@ -15,13 +15,13 @@ require("dotenv").config();
 exports.signup = async (req, res) => {
 	try {
 		// Destructure fields from the request body
+		console.log(req.body)
 		const {
 			firstName,
 			lastName,
 			email,
 			password,
 			confirmPassword,
-			contactNumber,
 			contactNo,
 			otp,
 		} = req.body;
